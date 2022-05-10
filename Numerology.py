@@ -16,38 +16,32 @@ class Numerology:
 
     def getLifePath(self):
         sLongDate = self.sDob.replace("-", "")
-        sDigit = self.__getSingleDigit(sLongDate)
-        return sDigit
+        return self.__getSingleDigit(sLongDate)
 
     def getBirthday(self):
         lst_date_split = self.sDob.split("-")
-        sDigit = self.__getSingleDigit(lst_date_split[1])
-        return sDigit
+        return self.__getSingleDigit(lst_date_split[1])
 
     def getAttitude(self):
         lst_date_split = self.sDob.split("-")
-        sDigit = self.__getSingleDigit(lst_date_split[0] + lst_date_split[1])
-        return sDigit
+        return self.__getSingleDigit(lst_date_split[0] + lst_date_split[1])
 
     def getSoul(self):
         iSoulTotal = 0
         for char in self.sName.lower():
             if char in self.__sVowels:
                 iSoulTotal += self.__dictLetterValues[char]
-        sDigit = self.__getSingleDigit(iSoulTotal)
-        return sDigit
+        return self.__getSingleDigit(iSoulTotal)
 
     def getPersonality(self):
         iPersonalityTotal = 0
         for char in self.sName.lower():
             if char not in self.__sVowels:
                 iPersonalityTotal += self.__dictLetterValues[char]
-        sDigit = self.__getSingleDigit(iPersonalityTotal)
-        return sDigit
+        return self.__getSingleDigit(iPersonalityTotal)
 
     def getPowerName(self):
-        sDigit = self.__getSingleDigit(self.getSoul() + self.getPersonality())
-        return sDigit
+        return self.__getSingleDigit(self.getSoul() + self.getPersonality())
 
     def __getSingleDigit(self, iLongNumber):
         while int(iLongNumber) > 9:
